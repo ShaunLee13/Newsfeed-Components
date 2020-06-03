@@ -31,3 +31,10 @@ let menuItems = [
 
   Step 6: Use 'menuMaker' to create a menu using the 'menuItems' array, and append the returned markup to the DOM.
 */
+const menuButton = document.querySelector('.menu-button')
+
+function menuMaker(array){
+  const menu = null
+  const list = null
+  const menuItem = null
+}
