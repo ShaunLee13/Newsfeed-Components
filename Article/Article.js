@@ -85,6 +85,13 @@ const data = [
     thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
           Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
+  },
+  {
+    title: `Things You Didn't Know You Didn't Want to Know`,
+    date:'Jan, 1st 1901',
+    firstParagraph:'This is a short paragraph because reasons. That is wonderful. I love paragraphs.',
+    secondParagraph:'Have you ever wondered what the fox says? There are many debates. But we will never know.',
+    thirdParagraph:'Once upon a time, there was a school called Lambda School. Students learned there, and it made them think. This is in contrast to what our current president does.'
   }
 ];
 
@@ -111,3 +118,43 @@ const data = [
 
   Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new article.
 */
+const articlebox = document.querySelector('.articles')
+
+function articleMaker(articleObj){
+  const article = document.createElement('div')
+  const title = document.createElement('h2')
+  const date = document.createElement('p')
+  const content1 = document.createElement('p')
+  const content2 = document.createElement('p')
+  const content3 = document.createElement('p')
+  const button = document.createElement('span')
+
+  article.classList.add('article')
+  date.classList.add('date')
+  button.classList.add('expandButton')
+
+  title.textContent = articleObj.title
+  date.textContent = articleObj.date
+  content1.textContent = articleObj.firstParagraph
+  content2.textContent = articleObj.secondParagraph
+  content3.textContent = articleObj.thirdParagraph
+  button.textContent = 'Read More!'
+
+  button.addEventListener('click', event => {
+    article.classList.toggle('article-open')
+  })
+
+  article.appendChild(title)
+  article.appendChild(date)
+  article.appendChild(content1)
+  article.appendChild(content2)
+  article.appendChild(content3)
+  article.appendChild(button)
+
+  return article
+}
+
+data.forEach((news) => {
+  const article = articleMaker(news)
+  articlebox.appendChild(article)
+})
